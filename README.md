@@ -1,16 +1,26 @@
-# React + Vite
+# Film Sitesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React ile yapılmış film takip uygulaması. İzlenecek filmleri ekleyebilir, izleme listesi oluşturabilir ve izlediğiniz filmleri takip edebilirsiniz.
 
-Currently, two official plugins are available:
+## Teknolojiler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite
+- React Router
 
-## React Compiler
+## Çalıştırma
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Proje `http://localhost:5173` adresinde açılır.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Komutlar
+
+| Komut | Açıklama |
+|-------|----------|
+| `npm run dev` | Geliştirme sunucusunu başlatır |
+| `npm run build` | Production build oluşturur |
+| `npm run preview` | Build önizlemesi |

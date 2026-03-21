@@ -25,7 +25,7 @@ const Add = () => {
     <div className="add-page">
       <div className="container">
          <div className="add-content">
-          <img src="https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/9ZyAUZrfccsjtDwYgc7yvOBnqM9.jpg" />
+          <img src="https://posterspy.com/wp-content/uploads/2020/04/DuneFINAL.jpg" />
           <div className="titles"><h1>Hoş geldiniz</h1><h2>
               Milyonlarca film, TV şovu ve keşfedilecek kişi. Şimdi keşfedin.
             </h2></div>

@@ -10,7 +10,7 @@ const Header = () => {
                     <div className="brand"> <Link to="/watchlist">Izlenecekler</Link></div>
                     <ul className="nav-links">
                         <li> <Link to="/watched">Izlenenler</Link></li>
-                        <li>  <Link to="/" >+</Link> </li>
+                        <li>  <Link to="/" ><i className="fas fa-plus"></i></Link> </li>
                     </ul>
 
                 </div>

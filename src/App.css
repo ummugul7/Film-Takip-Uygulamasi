@@ -45,7 +45,7 @@ body {
 
 .btn {
   padding: 6px 10px;
-  background-color: var(--secondary);
+  background-color: #FCBF49;
   color: #fff;
   border-radius: 8px;
   text-transform: uppercase;
@@ -58,7 +58,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #1aa762;
+  background-color: #003049;
   opacity: 1;
   cursor: pointer;
 }
@@ -125,7 +125,7 @@ header .nav-links li:last-child {
 .add-content {
   padding: 50px 0;
   margin: 0 auto;
-  height: 300px;
+  height: 400px;
   position: relative;
 }
 
@@ -133,7 +133,9 @@ header .nav-links li:last-child {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1140px;
+  width: 100%;       /* Sabit px yerine %100 yaptık */
+  height: 100%;      /* Yüksekliği de doldursun */
+  object-fit: cover;
 }
 
 .add-content>.titles {
@@ -168,15 +170,17 @@ header .nav-links li:last-child {
   position: absolute;
   bottom: 0;
   left: 10%;
+  margin-bottom: 12px;
 }
 
 .results {
   padding: 0;
   margin: 0;
-  margin-top: 350px;
+  height: 300px;
+  margin-top: 450px;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+ grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -188,7 +192,12 @@ header .nav-links li:last-child {
 
 .result-card {
   display: flex;
+
   margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+
 }
 
 .result-card .poster-wrapper img,
@@ -216,6 +225,7 @@ header .nav-links li:last-child {
 .result-card .info .controls {
   display: flex;
   flex: 0 0 10%;
+  margin-top: auto;
 }
 
 .result-card .info .title {
@@ -234,6 +244,10 @@ header .nav-links li:last-child {
 
 .result-card .controls button {
   margin-right: 10px;
+  flex: 1; /* Butonlar eşit genişlikte olsun */
+  padding: 8px 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 /* Movie Page */
@@ -250,7 +264,7 @@ header .nav-links li:last-child {
 
 .count-pill {
   display: block;
-  background-color: var(--secondary);
+  background-color: #FCBF49;
   padding: 5px 15px;
   font-size: 1.125rem;
   font-weight: 600;
