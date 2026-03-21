@@ -1,4 +1,4 @@
-# Movie search
+# Film Takip Uygulaması
 
 React ile geliştirilmiş kişisel film takip uygulaması. TMDB API üzerinden film arayabilir, izleyecekler listenize ekleyebilir ve izlediklerinizi takip edebilirsiniz.
 
