@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
-
+{/* create context tanımı verinin her yerden erişebileceiğini tanımlar  */}
 export const GlobalContext = createContext();
 {/*intialstate başlangıç değeri  */}
 const initialState = {
@@ -12,14 +12,13 @@ const initialState = {
 export const GlobalProvider = (props) => {
     const [state,dispatch] = useReducer(AppReducer,initialState)
     
-    useEffect(() => {
-        {/*watchlisti local storageye kaydetmek için json şekilnde çeviriyoruz  */}
-        localStorage.setItem("watchlist", JSON.stringify(state.watchlist))
-    }, [state])
+     useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(state.watchlist))
+    }, [state.watchlist])  
 
-        useEffect(() => {
-        localStorage.setItem("watchedlist", JSON.stringify(state.watchedlist))
-        },[state])
+     useEffect(() => {
+    localStorage.setItem("watchedlist", JSON.stringify(state.watchedlist))
+    }, [state.watchedlist])
     {/*buradaki bu movie değerini result cardan alacağız  */}
     const addMovieToWatchlist = (movie) => {
         dispatch({type:"ADD_MOVIE_TO_WATCHLIST", payload:movie}) 
@@ -49,8 +48,8 @@ export const GlobalProvider = (props) => {
           addMovieToWatchlist,
           removeMovieFromWatchlist,
           addMovieToWatchedlist,
-        moveToWatchlist,
-        removeMovieFromWatched,
+          moveToWatchlist,
+          removeMovieFromWatched,
 
         }}>
             {props.children}

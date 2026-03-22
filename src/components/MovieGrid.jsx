@@ -14,6 +14,7 @@ const MovieGrid = ({ title, movies ,type}) => {
         {movies.length > 0 ? (
           <div className="movie-grid">
             {movies.map((movie) => (
+              //burdaki key prop'u React'in her bir elemanı benzersiz olarak tanımlaması için kullanılır. Bu, React'in hangi öğelerin değiştiğini, eklendiğini veya kaldırıldığını daha iyi anlamasına yardımcı olur ve böylece performansı artırır.
               <MovieCard key={movie.id} movie={movie} type={type} />
             ))}
           </div> 

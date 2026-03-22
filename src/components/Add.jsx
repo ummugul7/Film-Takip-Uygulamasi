@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
 import { useState } from 'react'
 import ResultCard from './ResultCard';
-import { GlobalContext } from '../context/GlobalState';
 
 const Add = () => {
-  const{ummugulcaglar} =useContext(GlobalContext)
-  const[query , setQuery] = React.useState("")
+  
   const [results, setResults] = useState([]);
-  function onChange(e) { 
-    setQuery(e.target.value);
 
+  function onChange(e) { 
+  
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&query=${e.target.value}&language=en-US&page=1`)
 .then(res => res.json())
 .then(data => {if (!data.errors) {
@@ -30,7 +27,7 @@ const Add = () => {
               Milyonlarca film, TV şovu ve keşfedilecek kişi. Şimdi keşfedin.
             </h2></div>
             <div className="input-wrapper">
-              <input type="text"  value={query} onChange={onChange} placeholder="Film,Dizi,Kişi ara ..." />
+              <input type="text"   onChange={onChange} placeholder="Film,Dizi,Kişi ara ..." />
             </div>
             {results.length > 0 && (
               <ul className="results"> 
