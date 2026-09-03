@@ -9,9 +9,9 @@ on:
 
 env:
   APP_NAME: FilmTakip
-  WEB_REPO: ummugul7/gym_website        # TODO: gerçek "kullanici/repo-adi" ile değiştir
-  WEB_REPO_BRANCH: master               # TODO: gym_website'in gerçek branch adı (screenshot'a göre 
-  DEST_PATH: wwwroot/film-takip         # TODO: gym_website içinde hangi klasöre gitsin istiyorsan
+  WEB_REPO: ummugul7/gym_website        
+  WEB_REPO_BRANCH: master               
+  DEST_PATH: wwwroot/film-takip         
 
 jobs:
   build-and-commit:
@@ -54,7 +54,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(${{ env.APP_NAME }}): build güncellendi (kaynak commit: ${{ github.sha }})"
+          git commit -m "chore(${{ env.APP_NAME }}): build güncellendi [$(date +'%Y-%m-%d %H:%M:%S')] (kaynak commit: ${{ github.sha }})"
 
           for i in 1 2 3 4 5; do
             git pull --rebase origin ${{ env.WEB_REPO_BRANCH }} && git push origin ${{ env.WEB_REPO_BRANCH }} && break
