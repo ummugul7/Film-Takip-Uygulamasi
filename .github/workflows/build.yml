@@ -1,0 +1,62 @@
+# Repo: <senin React reponun adı, ör. film-takip-uygulamasi>
+# Konum: .github/workflows/build.yml
+name: Build and Commit to .NET Repo
+
+on:
+  push:
+    branches: [ main ]          # TODO: React reponun gerçek branch adını kontrol et
+
+env:
+  APP_NAME: FilmTakip
+  WEB_REPO: ummugul7/gym_website        # TODO: gerçek "kullanici/repo-adi" ile değiştir
+  WEB_REPO_BRANCH: master               # TODO: gym_website'in gerçek branch adı (screenshot'a göre 
+  DEST_PATH: wwwroot/film-takip         # TODO: gym_website içinde hangi klasöre gitsin istiyorsan
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kendi reposu
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Checkout .NET reposu (sadece ilgili klasör)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.WEB_REPO }}
+          ref: ${{ env.WEB_REPO_BRANCH }}
+          token: ${{ secrets.CROSS_REPO_TOKEN }}
+          path: web-repo
+          sparse-checkout: |
+            ${{ env.DEST_PATH }}
+          sparse-checkout-cone-mode: true
+
+      - name: Build çıktısını .NET reposuna kopyala ve commit'le
+        run: |
+          rm -rf "web-repo/${{ env.DEST_PATH }}"
+          mkdir -p "web-repo/${{ env.DEST_PATH }}"
+          cp -r dist/. "web-repo/${{ env.DEST_PATH }}/"   # Vite kullanıyorsun, çıktı klasörü "dist/" doğru
+
+          cd web-repo
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git add "${{ env.DEST_PATH }}"
+
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok, commit atlanıyor."
+            exit 0
+          fi
+
+          git commit -m "chore(${{ env.APP_NAME }}): build güncellendi (kaynak commit: ${{ github.sha }})"
+
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin ${{ env.WEB_REPO_BRANCH }} && git push origin ${{ env.WEB_REPO_BRANCH }} && break
+            echo "Push başarısız, tekrar deneniyor... ($i)"
+            sleep 5
+          done
