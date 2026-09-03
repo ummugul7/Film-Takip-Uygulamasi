@@ -54,7 +54,8 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(${{ env.APP_NAME }}): build güncellendi [$(date +'%Y-%m-%d %H:%M:%S')] (kaynak commit: ${{ github.sha }})"
+          CURRENT_DATE=$(TZ="Europe/Istanbul" date +"%Y-%m-%d %H:%M:%S")
+          git commit -m "chore(${{ env.APP_NAME }}): build güncellendi [$CURRENT_DATE] (kaynak commit: ${{ github.sha }})"
 
           for i in 1 2 3 4 5; do
             git pull --rebase origin ${{ env.WEB_REPO_BRANCH }} && git push origin ${{ env.WEB_REPO_BRANCH }} && break
