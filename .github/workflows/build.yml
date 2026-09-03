@@ -5,6 +5,7 @@ name: Build and Commit to .NET Repo
 on:
   push:
     branches: [ main ]          # TODO: React reponun gerçek branch adını kontrol et
+  workflow_dispatch:
 
 env:
   APP_NAME: FilmTakip
