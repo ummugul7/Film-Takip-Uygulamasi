@@ -23,8 +23,8 @@ const Add = () => {
       <div className="container">
          <div className="add-content">
           <img src="https://posterspy.com/wp-content/uploads/2020/04/DuneFINAL.jpg" />
-          <div className="titles"><h1>Hoş geldiniz</h1><h2>
-              Milyonlarca film, TV şovu ve keşfedilecek kişi. Şimdi keşfedin.
+          <div className="titles"><h1>Hoş Geldiniz</h1><h2>
+              Milyonlarca film, TV şovu ve keşfedilecek kişi. Hemen keşfedin.
             </h2></div>
             <div className="input-wrapper">
               <input type="text"   onChange={onChange} placeholder="Film,Dizi,Kişi ara ..." />
